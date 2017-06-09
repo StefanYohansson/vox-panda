@@ -8,25 +8,26 @@ class Pad extends Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.handleKeys(nextProps.keyPressed)
+  }
+
   handleTouch = () => {
     console.log('play', this.props)
     const { Synth, pad } = this.props;
-    console.log(Synth)
     Synth.triggerAttackRelease(pad.envelope.attack, pad.envelope.release);
     this.setState({ active: true });
   }
 
-  keyDown = (evt) => {
-    const keyPressed = evt.target.value;
-    const padKey = this.props.touchKey.charCodeAt(0);
+  handleKeys = (keyPressed) => {
+    const padKey = this.props.pad.key;
     if (padKey == keyPressed) {
-      console.log(padKey)
       this.handleTouch();
     }
   }
 
   render() {
-    const label = this.props.label;
+    const { pad: { label, key } } = this.props;
     return(
       <div
         onMouseDown={this.handleTouch}

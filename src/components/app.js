@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
 import Mpc from './mpc';
+import { keyEvent } from '../actions/actions'; 
 
 class App extends Component {
+  componentDidMount() {
+    window.addEventListener('keydown', (evt) => this.props.dispatch(keyEvent(evt.key)));
+  }
   render() {
-    console.log(this.props)
     return (
-      <main>
-        <Mpc pads={this.props.pads} />
+      <main >
+        <Mpc keyPressed={this.props.keyPressed} pads={this.props.pads} />
       </main>
     );
   }
@@ -15,6 +18,7 @@ class App extends Component {
 
 export default connect(state => {
   return ({
-    pads: state.pads
+    pads: state.pads,
+    keyPressed: state.keyPressed
   });
 })(App);

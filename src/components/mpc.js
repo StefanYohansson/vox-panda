@@ -6,10 +6,11 @@ class Mpc extends Component {
   render() {
     const Synth = new Tone.Synth().toMaster();
     const pads = this.props.pads;
+    const keyPressed = this.props.keyPressed;
     return (
       <div className="mpc-container">
         {
-          pads.map(pad => <Pad Synth={Synth} pad={pad}/>) 
+          pads.map(pad => <Pad keyPressed={keyPressed} Synth={Synth} pad={pad}/>) 
         }
       </div>
     );
