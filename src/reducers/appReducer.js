@@ -99,7 +99,9 @@ const initialState = {
         type: "triangle"
       }
     },
-  ]
+  ],
+  keyPressed: '',
+  currentPad: null
 }
 
 export default function appReducer(state = initialState, action) {
@@ -117,6 +119,18 @@ export default function appReducer(state = initialState, action) {
         keyPressed: ''
       }
 
+    case 'SET_CURRENT_PAD':
+      const pad = action.pad;
+      return {
+        ...state,
+        currentPad: pad
+      }
+
+    case 'CLEAN_CURRENT_PAD':
+      return {
+        ...state,
+        currentPad: null 
+      }
     default:
       return state
   }

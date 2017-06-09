@@ -1,42 +1,39 @@
 import React, { Component } from 'react';
-import { removeKeyEvent } from '../actions/actions';
+import { removeKeyEvent, setCurrent } from '../actions/actions';
+import { getInstance } from '../Tone';
 
 class Pad extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      active: false
-    };
-  }
-
   componentWillReceiveProps(nextProps) {
     this.handleKeys(nextProps.keyPressed)
   }
 
   handleTouch = () => {
-    const { Synth, pad, dispatch } = this.props;
+    const { pad, dispatch } = this.props;
+    const Synth = getInstance();
     Synth.triggerAttackRelease(pad.envelope.attack, pad.envelope.release);
-    this.setState({ active: false });
     dispatch(removeKeyEvent());
   }
 
   handleKeys = (keyPressed) => {
     const padKey = this.props.pad.key;
     if (padKey == keyPressed) {
-      this.setState({ active: true }, this.handleTouch)
-      
+      this.handleTouch();
     }
   }
 
   render() {
-    const { pad: { label, key } } = this.props;
+    const { pad: { label, key }, dispatch } = this.props;
     return(
       <div
-        onMouseDown={evt => {
-          this.setState({ active: true }, () => this.handleTouch(evt))
-        }}
-        className={`pad-container ${this.state.active ? 'active' : ''}`}>
+        onMouseDown={this.handleTouch} 
+        className={`pad-container ${false ? 'active' : ''}`}>
         <small>{label}</small>
+        <nav className="actions-container">
+          <i className="fa fa-cog" onClick={() => {
+            console.log(dispatch, this.props.pad)
+            dispatch(setCurrent(this.props.pad))
+          }}/>
+        </nav>
       </div>
     );
   }
