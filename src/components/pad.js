@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { removeKeyEvent } from '../actions/actions';
 
 class Pad extends Component {
   constructor(props) {
@@ -13,16 +14,17 @@ class Pad extends Component {
   }
 
   handleTouch = () => {
-    console.log('play', this.props)
-    const { Synth, pad } = this.props;
+    const { Synth, pad, dispatch } = this.props;
     Synth.triggerAttackRelease(pad.envelope.attack, pad.envelope.release);
-    this.setState({ active: true });
+    this.setState({ active: false });
+    dispatch(removeKeyEvent());
   }
 
   handleKeys = (keyPressed) => {
     const padKey = this.props.pad.key;
     if (padKey == keyPressed) {
-      this.handleTouch();
+      this.setState({ active: true }, this.handleTouch)
+      
     }
   }
 
@@ -30,8 +32,9 @@ class Pad extends Component {
     const { pad: { label, key } } = this.props;
     return(
       <div
-        onMouseDown={this.handleTouch}
-        onMouseUp={() => this.setState({ active: false })}
+        onMouseDown={evt => {
+          this.setState({ active: true }, () => this.handleTouch(evt))
+        }}
         className={`pad-container ${this.state.active ? 'active' : ''}`}>
         <small>{label}</small>
       </div>

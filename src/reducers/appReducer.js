@@ -35,7 +35,7 @@ const initialState = {
     },
     {
       label: 'pad4',
-      key: '2',
+      key: '4',
       envelope: {
         attack: "C6",
         release: "10n"
@@ -57,7 +57,7 @@ const initialState = {
     },
     {
       label: 'pad6',
-      key: '7',
+      key: '6',
       envelope: {
         attack: "D3",
         release: "10n"
@@ -105,11 +105,18 @@ const initialState = {
 export default function appReducer(state = initialState, action) {
   switch(action.type) {
     case 'KEY_EVENT': 
-      const keyCode = action.keyCode;
+      const keyPressed = action.keyCode;
       return {
         ...state,
-        keyCode
+        keyPressed
       };
+
+    case 'REMOVE_KEY_EVENT':
+      return {
+        ...state,
+        keyPressed: ''
+      }
+
     default:
       return state
   }

@@ -1,7 +1,12 @@
 export function keyEvent(keyCode) {
-  console.log(keyCode)
   return {
     type: 'KEY_EVENT',
     keyCode
+  }
+}
+
+export function removeKeyEvent() {
+  return {
+    type: 'REMOVE_KEY_EVENT',
   }
 }

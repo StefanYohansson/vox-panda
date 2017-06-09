@@ -10,7 +10,7 @@ class Mpc extends Component {
     return (
       <div className="mpc-container">
         {
-          pads.map(pad => <Pad keyPressed={keyPressed} Synth={Synth} pad={pad}/>) 
+          pads.map(pad => <Pad dispatch={this.props.dispatch} keyPressed={keyPressed} Synth={Synth} pad={pad}/>) 
         }
       </div>
     );
