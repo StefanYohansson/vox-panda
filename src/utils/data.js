@@ -1,17 +1,102 @@
-export const dataBanner = [
+export const pads = [
   {
-    position: 'left',
-    background: 'https://i.ytimg.com/vi/px0R4uyfj4E/maxresdefault.jpg',
-    text: 'Apostar é muito fácil'
+    label: 'pad1',
+    key: '1',
+    envelope: {
+      attack: "35",
+      release: "10n",
+      decay: "0.1"
+    },
+    oscilator: {
+      type: "triangle"
+    }
+  }, 
+  {
+    label: 'pad2',
+    key: '2',
+    envelope: {
+      attack: "C3",
+      release: "10n"
+    },
+    oscilator: {
+      type: "triangle"
+    }
   },
   {
-    position: 'center',
-    background: 'http://nexapress.com/wp-content/uploads/2017/02/wp-1487216760447.jpg',
-    text: 'Ganha seu time e você!'
+    label: 'pad3',
+    key: '3',
+    envelope: {
+      attack: "E5",
+      release: "10n"
+    },
+    oscilator: {
+      type: "triangle"
+    }
   },
   {
-    position: 'right',
-    background: 'http://www.fabiocruz.com.br/wp-content/uploads/2011/12/wallpapers-bola-estadio-futebol1.jpg',
-    text: 'Venha apostar conosco.'
-  }
-]
+    label: 'pad4',
+    key: '4',
+    envelope: {
+      attack: "C6",
+      release: "10n"
+    },
+    oscilator: {
+      type: "triangle"
+    }
+  },
+  {
+    label: 'pad5',
+    key: '5',
+    envelope: {
+      attack: "C2",
+      release: "10n"
+    },
+    oscilator: {
+      type: "triangle"
+    }
+  },
+  {
+    label: 'pad6',
+    key: '6',
+    envelope: {
+      attack: "D3",
+      release: "10n"
+    },
+    oscilator: {
+      type: "triangle"
+    }
+  },
+  {
+    label: 'pad7',
+    key: '7',
+    envelope: {
+      attack: "A5",
+      release: "10n"
+    },
+    oscilator: {
+      type: "triangle"
+    }
+  },
+  {
+    label: 'pad8',
+    key: '8',
+    envelope: {
+      attack: "G3",
+      release: "10n"
+    },
+    oscilator: {
+      type: "triangle"
+    }
+  },
+  {
+    label: 'pad9',
+    key: '9',
+    envelope: {
+      attack: "F4",
+      release: "10n"
+    },
+    oscilator: {
+      type: "triangle"
+    }
+  },
+];

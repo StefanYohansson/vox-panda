@@ -12,25 +12,28 @@ class Pad extends Component {
     const Synth = getInstance();
     Synth.triggerAttackRelease(pad.envelope.attack, pad.envelope.release);
     dispatch(removeKeyEvent());
+    setTimeout(() => this.pad.style.background = "white", 100);
   }
 
   handleKeys = (keyPressed) => {
     const padKey = this.props.pad.key;
     if (padKey == keyPressed) {
+      this.pad.style.background = "red";
+      console.log(this.pad)
       this.handleTouch();
     }
   }
 
   render() {
-    const { pad: { label, key }, dispatch } = this.props;
+    const { pad: { label, key }, keyPressed, dispatch } = this.props;
     return(
       <div
         onMouseDown={this.handleTouch} 
-        className={`pad-container ${false ? 'active' : ''}`}>
+        className={`pad-container`}
+        ref={(c) => this.pad = c} >
         <small>{label}</small>
         <nav className="actions-container">
           <i className="fa fa-cog" onClick={() => {
-            console.log(dispatch, this.props.pad)
             dispatch(setCurrent(this.props.pad))
           }}/>
         </nav>
