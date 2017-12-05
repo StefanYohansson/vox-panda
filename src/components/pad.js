@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { removeKeyEvent, setCurrent } from '../actions/actions';
-import { getInstance } from '../Tone';
+import { getTone } from '../Tone';
 
 class Pad extends Component {
   componentWillReceiveProps(nextProps) {
@@ -9,7 +9,7 @@ class Pad extends Component {
 
   handleTouch = () => {
     const { pad, dispatch } = this.props;
-    const Synth = getInstance();
+    const Synth = getTone().Synth;
     Synth.triggerAttackRelease(pad.envelope.attack, pad.envelope.release);
     dispatch(removeKeyEvent());
     setTimeout(() => this.pad.style.background = "white", 100);
