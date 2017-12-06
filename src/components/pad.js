@@ -19,7 +19,6 @@ class Pad extends Component {
     const padKey = this.props.pad.key;
     if (padKey == keyPressed) {
       this.pad.style.background = "red";
-      console.log(this.pad)
       this.handleTouch();
     }
   }
