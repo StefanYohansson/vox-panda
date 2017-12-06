@@ -16,10 +16,6 @@ class App extends Component {
     } = this.props;
     return (
       <div>
-        <header>
-          <h1>{'ReactMPC'}</h1>
-          <p>{'a React + ToneJS'}</p>
-        </header>
         <main >
           <Mpc dispatch={dispatch} keyPressed={keyPressed} pads={pads} />
           <Sidebar currentPad={currentPad} />

@@ -4,15 +4,15 @@ import _ from 'lodash';
 
 class Sidebar extends PureComponent {
   render() {
+    const { currentPad: { conf } } = this.props;
     const validCurrentPad = Object.keys(this.props.currentPad).length;
-    const { currentPad: { padType, label } } = this.props;
     return (
       <aside className={`sidebar-container ${ validCurrentPad ? 'active' : ''}`}>
         {
           validCurrentPad ? 
           <div className="form-container">
-            <h2>{label}</h2>
-            {getFormByType(padType)}
+            <h2>{conf.label}</h2>
+            {getFormByType(this.props.currentPad)}
           </div>
           : null
         }

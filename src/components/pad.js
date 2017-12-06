@@ -8,9 +8,9 @@ class Pad extends Component {
   }
 
   handleTouch = () => {
-    const { pad, dispatch } = this.props;
+    const { pad: { conf }, dispatch } = this.props;
     const Synth = getTone().Synth;
-    Synth.triggerAttackRelease(pad.envelope.attack, pad.envelope.release);
+    Synth.triggerAttackRelease(conf.note, conf.duration);
     dispatch(removeKeyEvent());
     setTimeout(() => this.pad.style.background = "white", 100);
   }
@@ -24,13 +24,13 @@ class Pad extends Component {
   }
 
   render() {
-    const { pad: { label, key }, keyPressed, dispatch } = this.props;
+    const { pad: { conf }, keyPressed, dispatch } = this.props;
     return(
       <div
         onMouseDown={this.handleTouch} 
         className={`pad-container`}
         ref={(c) => this.pad = c} >
-        <small>{label}</small>
+        <small>{conf.label}</small>
         <nav className="actions-container">
           <i className="fa fa-cog" onClick={() => {
             dispatch(setCurrent(this.props.pad))

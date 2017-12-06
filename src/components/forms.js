@@ -1,6 +1,11 @@
 import React from 'react';
 import { LocalForm, Control } from 'react-redux-form';
 
+const partials = {
+  envelope: EnvelopePartials(),
+  oscillator: OscillatorPartials()
+}
+
 function noFormFound(type) {
   return (
     <div>
@@ -8,6 +13,7 @@ function noFormFound(type) {
     </div>
   );
 }
+
 function makeOptions(opts) {
   return opts.map(item => {
     return (
@@ -15,11 +21,13 @@ function makeOptions(opts) {
     );
   });
 }
+
 function EnvelopePartials() {
   const curveTypes = [
     'linear', 'exponential', 'sine',
     'cosine', 'bounce', 'riple', 'step'
   ];
+
   const curveOptions = makeOptions(curveTypes);
 
   return (
@@ -53,7 +61,7 @@ function EnvelopePartials() {
   );
 }
 
-function OmniOscillatorPartials() {
+function OscillatorPartials() {
   const oscillatorTypes = [
     'sine', 'fmsine', 'amsine',
     'fatsine', 'square', 'fmsquare',
@@ -86,21 +94,9 @@ function OmniOscillatorPartials() {
   );
 }
 
-function mountPartials(pieces) {
-  const partial = {
-    envelope: EnvelopePartials(),
-    omniOscillator: OmniOscillatorPartials()
-  }
-  const mountedForm = pieces.map(item => {
-    return partial[item] || null
-  });
+const mountPartials = pieces => pieces.map(item => partials[item] || null);
 
-  return mountedForm;
-}
-
-function SynthForm(props) {
-  return mountPartials(['omniOscillator', 'envelope']);
-}
+const SynthForm = props => mountPartials(['oscillator', 'envelope']);
 
 class PadForm extends React.Component {
   attachFormDispatch = formDispatch => {
@@ -116,7 +112,7 @@ class PadForm extends React.Component {
   }
 
   render () {
-    const { type } = this.props;
+    const { pad: { conf } } = this.props;
     return (
       <LocalForm
         model={'SynthForm'}
@@ -128,12 +124,12 @@ class PadForm extends React.Component {
             this.attachFormDispatch(formDispatch)
           }
         }>
-        { this.getFields(type) }
+        { this.getFields(conf.padType) }
       </LocalForm>
     );
   }
 }
 
-export function getFormByType(type, props) {
-  return <PadForm type={type} {...props} />;
+export function getFormByType(pad) {
+  return <PadForm pad={pad} />;
 }
