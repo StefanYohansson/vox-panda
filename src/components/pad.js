@@ -27,7 +27,7 @@ class Pad extends Component {
     const { pad: { conf }, keyPressed, dispatch } = this.props;
     return(
       <div
-        onMouseDown={this.handleTouch} 
+        onMouseDown={this.handleTouch}
         className={`pad-container`}
         ref={(c) => this.pad = c} >
         <small>{conf.label}</small>

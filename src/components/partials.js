@@ -17,9 +17,9 @@ function noFormFound(type) {
 }
 
 function makeOptions(opts) {
-  return opts.map(item => {
+  return opts.map((item, key )=> {
     return (
-      <option value={item}>{item}</option>
+      <option key={key} value={item}>{item}</option>
     );
   });
 }
@@ -90,8 +90,8 @@ function OscillatorPartials() {
   const oscillatorTypes = [
     'sine', 'fmsine', 'amsine',
     'fatsine', 'square', 'fmsquare',
-    'amsquare', 'fatsquare', 'tringle',
-    'fmtringle', 'amtringle', 'fattringle',
+    'amsquare', 'fatsquare', 'triangle',
+    'fmtriangle', 'amtriangle', 'fattriangle',
     'sawtooth', 'fmsawtooth', 'amsawtooth',
     'fatsawtooth', 'pwm', 'pulse'
   ];

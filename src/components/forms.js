@@ -39,5 +39,5 @@ class PadForm extends React.Component {
 }
 
 export function getFormByType(pad) {
-  return <PadForm pad={pad} />;
+  return <PadForm key={pad.conf.label} pad={pad} />;
 }
