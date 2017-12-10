@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
-import { keyEvent } from '../actions/actions'; 
-import Mpc from './mpc';
-import Sidebar from './sidebar';
+import { keyEvent } from 'vox/actions/actions'; 
+import Mpc from 'vox/components/mpc';
+import Sidebar from 'vox/components/sidebar';
 
 class App extends Component {
   componentDidMount() {

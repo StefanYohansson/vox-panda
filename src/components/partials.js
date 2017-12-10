@@ -1,6 +1,6 @@
 import React from 'react';
 import { LocalForm, Control } from 'react-redux-form';
-import { defaultKnobProps } from '../constants';
+import { defaultKnobProps } from 'vox/utils/constants';
 
 const partials = {
   envelope: EnvelopePartials(),

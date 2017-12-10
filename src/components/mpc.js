@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Pad from './pad';
+import Pad from 'vox/components/pad';
 
 class Mpc extends Component {
   render() {

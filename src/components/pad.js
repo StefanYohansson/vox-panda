@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { removeKeyEvent, setCurrent } from '../actions/actions';
-import { getTone } from '../Tone';
+import { removeKeyEvent, setCurrent } from 'vox/actions/actions';
+import { getTone } from 'vox/Tone';
 
 class Pad extends Component {
   componentWillReceiveProps(nextProps) {

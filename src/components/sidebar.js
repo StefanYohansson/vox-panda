@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import { getFormByType } from './forms'
 import _ from 'lodash';
+import { getFormByType } from 'vox/components/forms'
 
 class Sidebar extends PureComponent {
   render() {

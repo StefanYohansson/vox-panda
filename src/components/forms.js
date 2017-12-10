@@ -1,6 +1,6 @@
 import React from 'react';
 import { LocalForm, Control } from 'react-redux-form';
-import { mountPartials, confPartials } from './partials';
+import { mountPartials, confPartials } from 'vox/components/partials';
 
 const SynthForm = props => mountPartials(['playSettings', 'oscillator', 'envelope'], props);
 
