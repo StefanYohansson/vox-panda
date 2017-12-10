@@ -12,6 +12,7 @@ export function removeKeyEvent() {
 }
 
 export function setCurrent(pad) {
+  console.log('bora')
   return {
     type: 'SET_CURRENT_PAD',
     pad

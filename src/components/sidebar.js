@@ -11,7 +11,6 @@ class Sidebar extends PureComponent {
         {
           validCurrentPad ? 
           <div className="form-container">
-            <h2>{conf.label}</h2>
             {getFormByType(this.props.currentPad)}
           </div>
           : null

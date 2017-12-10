@@ -22,9 +22,12 @@ export default function appReducer(state = initialState, action) {
 
     case 'SET_CURRENT_PAD':
       const pad = action.pad;
+      console.log(pad)
       return {
         ...state,
-        currentPad: pad
+        currentPad: {
+          ...pad
+        }
       }
 
     case 'CLEAN_CURRENT_PAD':
