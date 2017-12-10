@@ -1,5 +1,6 @@
 import React from 'react';
 import { LocalForm, Control } from 'react-redux-form';
+import { defaultKnobProps } from '../constants';
 
 const partials = {
   envelope: EnvelopePartials(),
@@ -22,7 +23,7 @@ function makeOptions(opts) {
   });
 }
 
-function EnvelopePartials() {
+function EnvelopePartials(props) {
   const curveTypes = [
     'linear', 'exponential', 'sine',
     'cosine', 'bounce', 'riple', 'step'
@@ -33,30 +34,40 @@ function EnvelopePartials() {
   return (
     <div>
       <h1 className="subform-title">{'Envelope'}</h1>
-      <label>{'attack'}
-        <Control type="range" model=".attack" />
-      </label>
-      <label>{'decay'}
-        <Control type="range" model=".decay" />
-      </label>
-      <label>{'sustain'}
-        <Control type="range" model=".sustain" />
-      </label>
-      <label>{'release'}
-        <Control type="range" model=".release" />
-      </label>
-      <label>{'attackCurve'}
+      <label className="select-field">{'attackCurve'}
         <Control.select
           model=".attackCurve">
           {curveOptions}
         </Control.select>
       </label>
-      <label>{'releaseAttack'}
+      <label className="selectField">{'releaseAttack'}
         <Control.select
           model=".releaseAttack" >
           {curveOptions}
         </Control.select>
       </label>
+      <div className="knob-fields">
+        <label>{'attack'}
+          <Control
+            model=".attack"
+            {...defaultKnobProps} />
+        </label>
+        <label>{'decay'}
+          <Control
+            model=".decay"
+            {...defaultKnobProps} />
+        </label>
+        <label>{'sustain'}
+          <Control
+            model=".sustain"
+            {...defaultKnobProps} />
+        </label>
+        <label>{'release'}
+          <Control
+            model=".release"
+            {...defaultKnobProps} />
+        </label>
+      </div>
     </div>
   );
 }
@@ -75,28 +86,36 @@ function OscillatorPartials() {
   return (
     <div>
       <h1 className="subform-title">{'Oscillator'}</h1>
-      <label>{'frequency'}
-        <Control type="range" model=".frequency" />
-      </label>
-      <label>{'type'}
+      <label className="select-field">{'type'}
         <Control.select
           model=".type" >
           {oscillatorOptions}
         </Control.select>
       </label>
-      <label>{'phase'}
-        <Control type="range" model=".phase" />
-      </label>
-      <label>{'detune'}
-        <Control type="number" model=".detune" />
-      </label>
+      <div className="knob-fields">
+        <label>{'frequency'}
+          <Control
+            model=".frequency"
+            {...defaultKnobProps} />
+        </label>
+        <label>{'phase'}
+          <Control
+            model=".phase"
+            {...defaultKnobProps} />
+        </label>
+        <label>{'detune'}
+          <Control
+            model=".detune"
+            {...defaultKnobProps} />
+        </label>
+      </div>
     </div>
   );
 }
 
 const mountPartials = pieces => pieces.map(item => partials[item] || null);
 
-const SynthForm = props => mountPartials(['oscillator', 'envelope']);
+const SynthForm = props => mountPartials(['oscillator', 'envelope'], props);
 
 class PadForm extends React.Component {
   attachFormDispatch = formDispatch => {
@@ -111,6 +130,10 @@ class PadForm extends React.Component {
     return forms[type] || noFormFound(type);
   }
 
+  onChange = values => {
+    console.log(values)
+  }
+
   render () {
     const { pad: { conf } } = this.props;
     return (
@@ -119,6 +142,7 @@ class PadForm extends React.Component {
         initialState={{}}
         id={'synth-form'}
         className={'sidebar-form'}
+        onChange={this.onChange}
         getDispatch={
           formDispatch => {
             this.attachFormDispatch(formDispatch)
