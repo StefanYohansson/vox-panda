@@ -8,17 +8,16 @@ class Pad extends Component {
   }
 
   handleTouch = () => {
-    const { pad: { conf }, dispatch } = this.props;
+    const { pad: { playSettings }, dispatch } = this.props;
     const Synth = getTone().Synth;
-    Synth.triggerAttackRelease(conf.note, conf.duration);
+    Synth.triggerAttackRelease(playSettings.note, playSettings.duration);
     dispatch(removeKeyEvent());
     setTimeout(() => this.pad.style.background = "white", 100);
   }
 
   handleKeys = (keyPressed) => {
-    const padKey = this.props.pad.key;
+    const padKey = this.props.pad.conf.key;
     if (padKey == keyPressed) {
-      this.pad.style.background = "red";
       this.handleTouch();
     }
   }
