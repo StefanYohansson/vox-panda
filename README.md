@@ -1,2 +1,2 @@
-# react-mpc
-A mpc simulator with ReactJS + ToneJS
+# VoxPanda
+A virtual instrument inside the browser.
