@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { removeKeyEvent, setCurrent } from 'vox/actions/actions';
-import { getTone } from 'vox/Tone';
+import { play } from 'vox/utils/tone';
 
 class Pad extends Component {
   componentWillReceiveProps(nextProps) {
@@ -8,9 +8,8 @@ class Pad extends Component {
   }
 
   handleTouch = () => {
-    const { pad: { playSettings }, dispatch } = this.props;
-    const Synth = getTone().Synth;
-    Synth.triggerAttackRelease(playSettings.note, playSettings.duration);
+    const { pad, dispatch } = this.props
+    play(pad)
     dispatch(removeKeyEvent());
     setTimeout(() => this.pad.style.background = "white", 100);
   }

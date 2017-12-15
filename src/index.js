@@ -9,9 +9,11 @@ import Tone from 'tone';
 
 import appReducer from './reducers/appReducer.js'
 const root = document.getElementById('root');
-const store = createStore(appReducer);
+const store = createStore(
+  appReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
-console.log(store);
 ReactDOM.render(
   <Provider store={store}>
     <App/>

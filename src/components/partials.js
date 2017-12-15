@@ -127,7 +127,7 @@ function OscillatorPartials() {
   );
 }
 
-export function confPartials(props) {
+export function confPartials() {
   return (
     <div className="conf-partials">
       <Control.text className="editable-text" model=".conf.label" />

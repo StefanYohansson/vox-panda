@@ -18,7 +18,7 @@ class App extends Component {
       <div>
         <main >
           <Mpc dispatch={dispatch} keyPressed={keyPressed} pads={pads} />
-          <Sidebar currentPad={currentPad} />
+          <Sidebar dispatch={dispatch} currentPad={currentPad} />
         </main>
       </div>
     );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { LocalForm, Control } from 'react-redux-form';
 import { mountPartials, confPartials } from 'vox/components/partials';
+import { setPadAttributes } from 'vox/actions/actions';
 
 const SynthForm = props => mountPartials(['playSettings', 'oscillator', 'envelope'], props);
 
@@ -18,11 +19,12 @@ class PadForm extends React.Component {
   }
 
   onChange = values => {
-    console.log(values)
+    const { pad: { conf }, dispatch } = this.props;
+    dispatch(setPadAttributes(values))
   }
 
   render () {
-    const { pad: { conf } } = this.props;
+    const { pad, pad: { conf } } = this.props;
     return (
       <LocalForm
         model={'SynthForm'}
@@ -38,6 +40,6 @@ class PadForm extends React.Component {
   }
 }
 
-export function getFormByType(pad) {
-  return <PadForm key={pad.conf.label} pad={pad} />;
+export function getFormByType(pad, dispatch) {
+  return <PadForm dispatch={dispatch} key={pad.conf.label} pad={pad} />;
 }
