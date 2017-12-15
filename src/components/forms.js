@@ -35,6 +35,7 @@ class PadForm extends React.Component {
         getDispatch={dispatch => this.attachFormDispatch(dispatch)}>
         { confPartials() }
         { this.getFields(conf.padType) }
+        <button className={'pad-submit'}>{'Submit'}</button>
       </LocalForm>
     );
   }

@@ -3236,6 +3236,10 @@ react-canvas-knob@^0.5.0:
   dependencies:
     prop-types "^15.5.10"
 
+react-click-outside@tj/react-click-outside:
+  version "1.1.1"
+  resolved "https://codeload.github.com/tj/react-click-outside/tar.gz/7568a29705e0f06136c89cb30cc9dbfc0455b8fb"
+
 react-deep-force-update@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-1.0.1.tgz#f911b5be1d2a6fe387507dd6e9a767aa2924b4c7"

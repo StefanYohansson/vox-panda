@@ -130,7 +130,7 @@ function OscillatorPartials() {
 export function confPartials() {
   return (
     <div className="conf-partials">
-      <Control.text className="editable-text" model=".conf.label" />
+      <Control.text className="editable-text pad-label" model=".conf.label" />
       <label>{'key'}
         <Control.text model=".conf.key" />
       </label>
