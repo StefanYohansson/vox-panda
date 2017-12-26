@@ -4,8 +4,14 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import App from './components/app.js';
+import Login from './components/Login.js';
 import { getTone } from './Tone';
 import Tone from 'tone';
+import 'hack';
+import {
+  BrowserRouter as Router,
+  Route,
+} from 'react-router-dom';
 
 import appReducer from './reducers/appReducer.js'
 const root = document.getElementById('root');
@@ -16,6 +22,11 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <App/>
+    <Router>
+      <div>
+        <Route exact path="/" component={Login}/>
+        <Route path="/app" component={App}/>
+      </div>
+    </Router>
   </Provider>
   , root);
