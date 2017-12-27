@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { LocalForm, Control } from 'react-redux-form';
 import Logo from 'vox/components/Logo';
+import { createUser } from 'vox/api';
 
 const emptyErrors = {
   username: [],
@@ -34,6 +35,16 @@ class Login extends Component {
           }
         })
     })
+  }
+
+  handleSubmit = values => {
+    const { username, email, password } = values;
+    if (this.state.registerForm) {
+      createUser(username, password, email).then(
+        response => {
+        }
+      ).catch(e => console.log('error >', e));
+    }
   }
 
   render() {
